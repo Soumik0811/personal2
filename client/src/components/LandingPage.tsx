@@ -2,9 +2,10 @@ import React from 'react';
 
 interface LandingPageProps {
   onNavigate: (page: 'quiz' | 'gallery' | 'playlist') => void;
+  quizCompleted: boolean;
 }
 
-const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
+const LandingPage: React.FC<LandingPageProps> = ({ onNavigate, quizCompleted }) => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-8 text-center">
       <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-12 shadow-2xl border-8 border-yellow-400 max-w-4xl mx-auto transform hover:scale-105 transition-all duration-500">
@@ -35,13 +36,21 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
             <span className="text-sm">Collect keys to unlock surprises!</span>
           </button>
           
-          <button
-            onClick={() => onNavigate('playlist')}
-            className="bg-gradient-to-r from-red-400 to-pink-500 hover:from-red-500 hover:to-pink-600 text-white font-black py-8 px-6 rounded-2xl shadow-xl transform hover:scale-110 hover:-rotate-3 transition-all duration-300 text-xl border-4 border-white"
-          >
-            🎵<br />Our Playlist<br />
-            <span className="text-sm">Songs that tell our story!</span>
-          </button>
+          {quizCompleted ? (
+            <button
+              onClick={() => onNavigate('playlist')}
+              className="bg-gradient-to-r from-red-400 to-pink-500 hover:from-red-500 hover:to-pink-600 text-white font-black py-8 px-6 rounded-2xl shadow-xl transform hover:scale-110 hover:-rotate-3 transition-all duration-300 text-xl border-4 border-white"
+            >
+              🎵<br />Our Playlist<br />
+              <span className="text-sm">Songs that tell our story!</span>
+            </button>
+          ) : (
+            <div className="bg-gradient-to-r from-gray-400 to-gray-500 text-white font-black py-8 px-6 rounded-2xl shadow-xl opacity-60 text-xl border-4 border-white relative">
+              <div className="absolute top-2 right-2 text-3xl">🔒</div>
+              🎵<br />Our Playlist<br />
+              <span className="text-sm">Complete the quiz to unlock!</span>
+            </div>
+          )}
           
           <div className="bg-gradient-to-r from-purple-400 to-indigo-500 text-white font-black py-8 px-6 rounded-2xl shadow-xl opacity-60 text-xl border-4 border-white relative">
             <div className="absolute top-2 right-2 text-3xl">🔒</div>
