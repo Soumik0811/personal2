@@ -59,9 +59,14 @@ function App() {
             </button>
             <button
               onClick={() => setCurrentPage('playlist')}
-              className="bg-red-400 hover:bg-red-300 text-purple-800 font-black px-6 py-3 rounded-full shadow-lg transform hover:scale-110 transition-all duration-300 hover:-rotate-3 text-lg border-4 border-purple-800"
+              disabled={!quizCompleted}
+              className={`${
+                quizCompleted 
+                  ? 'bg-red-400 hover:bg-red-300 cursor-pointer' 
+                  : 'bg-gray-400 cursor-not-allowed opacity-50'
+              } text-purple-800 font-black px-6 py-3 rounded-full shadow-lg transform hover:scale-110 transition-all duration-300 hover:-rotate-3 text-lg border-4 border-purple-800`}
             >
-              🎵 Playlist
+              🎵 Playlist {!quizCompleted && '🔒'}
             </button>
           </div>
         </nav>
@@ -70,7 +75,7 @@ function App() {
       {/* Page Content */}
       <div className="relative z-10">
         {currentPage === 'landing' && (
-          <LandingPage onNavigate={setCurrentPage} />
+          <LandingPage onNavigate={setCurrentPage} quizCompleted={quizCompleted} />
         )}
         {currentPage === 'quiz' && (
           <Quiz 
