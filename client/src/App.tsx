@@ -32,19 +32,19 @@ function App() {
 
       {/* Navigation */}
       {currentPage !== 'landing' && (
-        <nav className="relative z-10 p-4">
-          <div className="flex flex-wrap justify-center gap-4">
+        <nav className="relative z-10 p-2 sm:p-4">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 lg:gap-4">
             <button
               onClick={() => setCurrentPage('landing')}
-              className="bg-yellow-400 hover:bg-yellow-300 text-purple-800 font-black px-6 py-3 rounded-full shadow-lg transform hover:scale-110 transition-all duration-300 hover:rotate-3 text-lg border-4 border-purple-800"
+              className="bg-yellow-400 hover:bg-yellow-300 text-purple-800 font-black px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3 rounded-full shadow-lg transform hover:scale-110 transition-all duration-300 hover:rotate-3 text-sm sm:text-base lg:text-lg border-2 sm:border-3 lg:border-4 border-purple-800"
             >
-              🏠 Home
+              🏠 <span className="hidden sm:inline">Home</span>
             </button>
             <button
               onClick={() => setCurrentPage('quiz')}
-              className="bg-green-400 hover:bg-green-300 text-purple-800 font-black px-6 py-3 rounded-full shadow-lg transform hover:scale-110 transition-all duration-300 hover:-rotate-3 text-lg border-4 border-purple-800"
+              className="bg-green-400 hover:bg-green-300 text-purple-800 font-black px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3 rounded-full shadow-lg transform hover:scale-110 transition-all duration-300 hover:-rotate-3 text-sm sm:text-base lg:text-lg border-2 sm:border-3 lg:border-4 border-purple-800"
             >
-              🤔 Quiz ({keysCollected} keys)
+              🤔 <span className="hidden sm:inline">Quiz</span> ({keysCollected}<span className="hidden sm:inline"> keys</span>)
             </button>
             <button
               onClick={() => setCurrentPage('gallery')}
@@ -53,9 +53,9 @@ function App() {
                 quizCompleted 
                   ? 'bg-blue-400 hover:bg-blue-300 cursor-pointer' 
                   : 'bg-gray-400 cursor-not-allowed opacity-50'
-              } text-purple-800 font-black px-6 py-3 rounded-full shadow-lg transform hover:scale-110 transition-all duration-300 hover:rotate-3 text-lg border-4 border-purple-800`}
+              } text-purple-800 font-black px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3 rounded-full shadow-lg transform hover:scale-110 transition-all duration-300 hover:rotate-3 text-sm sm:text-base lg:text-lg border-2 sm:border-3 lg:border-4 border-purple-800`}
             >
-              📸 Gallery {!quizCompleted && '🔒'}
+              📸 <span className="hidden sm:inline">Gallery</span> {!quizCompleted && '🔒'}
             </button>
             <button
               onClick={() => setCurrentPage('playlist')}
@@ -64,9 +64,9 @@ function App() {
                 quizCompleted 
                   ? 'bg-red-400 hover:bg-red-300 cursor-pointer' 
                   : 'bg-gray-400 cursor-not-allowed opacity-50'
-              } text-purple-800 font-black px-6 py-3 rounded-full shadow-lg transform hover:scale-110 transition-all duration-300 hover:-rotate-3 text-lg border-4 border-purple-800`}
+              } text-purple-800 font-black px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3 rounded-full shadow-lg transform hover:scale-110 transition-all duration-300 hover:-rotate-3 text-sm sm:text-base lg:text-lg border-2 sm:border-3 lg:border-4 border-purple-800`}
             >
-              🎵 Playlist {!quizCompleted && '🔒'}
+              🎵 <span className="hidden sm:inline">Playlist</span> {!quizCompleted && '🔒'}
             </button>
           </div>
         </nav>
@@ -94,5 +94,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
